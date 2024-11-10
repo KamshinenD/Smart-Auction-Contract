@@ -20,9 +20,9 @@ contract Auction {
         owner = payable(msg.sender);
         auctionState = State.Running;
         startBlock = block.number;
-        endBlock = startBlock + 4;
+        endBlock = startBlock + 40320; //blocks in one week
         ipfsHash = "";
-        bidIncrement = 1 ether;
+        bidIncrement = 100;
     }
 
     modifier notOwner() {
