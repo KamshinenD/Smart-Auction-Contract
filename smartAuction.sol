@@ -3,6 +3,8 @@
 pragma solidity >=0.5.0 <0.9.0;
 
 
+//for this auction, once finalised all funds are sent immediately without waiting for users to withdraw
+
 contract AuctionCreator{
     Auction[] public auctions;
 
