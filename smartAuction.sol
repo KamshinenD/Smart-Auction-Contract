@@ -2,6 +2,17 @@
 
 pragma solidity >=0.5.0 <0.9.0;
 
+
+contract AuctionCreator{
+    Auction[] public auctions;
+
+    function createAuction() public{
+        Auction newAuction = new Auction(msg.sender);
+        auctions.push(newAuction);
+    }
+}
+
+
 contract Auction {
     address payable public owner;
     uint public startBlock;
@@ -16,8 +27,8 @@ contract Auction {
     address[] public bidders; // Array to store bidder addresses
     uint bidIncrement;
 
-    constructor() {
-        owner = payable(msg.sender);
+    constructor(address _owner) {
+        owner = payable(_owner);
         auctionState = State.Running;
         startBlock = block.number;
         endBlock = startBlock + 40320; //blocks in one week
